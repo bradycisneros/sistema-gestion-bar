@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes - Bar Jair</title>
+    <link rel="stylesheet" href="reportes.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="cajera.html" class="nav-link">💵 Caja Registradora</a>
+            <a href="reportes.html" class="nav-link">📊 Reporte de Ventas</a>
+            <a href="productos.html" class="nav-link">⚙️ Gestión de Precios</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <header>
+            <h1>Bitácora de Operaciones</h1>
+        </header>
+
+        <div class="grid-resumen">
+            <div class="card">
+                <h3>Efectivo 💵</h3>
+                <p id="total-efectivo">$0.00</p>
+            </div>
+            <div class="card">
+                <h3>Tarjeta 💳</h3>
+                <p id="total-tarjeta">$0.00</p>
+            </div>
+            <div class="card">
+                <h3>Transferencia 📲</h3>
+                <p id="total-transferencia">$0.00</p>
+            </div>
+            <div class="card total-bruto">
+                <h3>Total Vendido 📈</h3>
+                <p id="total-vendido-bruto">$0.00</p>
+            </div>
+            <div class="card gastos">
+                <h3>Gasto Proveedores 🚚</h3>
+                <p id="total-gastos">$0.00</p>
+            </div>
+            <div class="card utilidad">
+                <h3>Utilidad Real 💰</h3>
+                <p id="total-utilidad">$0.00</p>
+            </div>
+        </div>
+
+        <div class="controles-reporte">
+            <div class="grupo-fechas">
+                <div class="input-fecha">
+                    <label>Desde:</label>
+                    <input type="date" id="fecha-inicio">
+                </div>
+                <div class="input-fecha">
+                    <label>Hasta:</label>
+                    <input type="date" id="fecha-fin">
+                </div>
+            </div>
+            
+            <div class="grupo-botones">
+                <button id="generar-reporte" class="btn-primario">🔄 Actualizar</button>
+                <button id="descargar-pdf" class="btn-secundario">📄 Imprimir Ticket</button>
+            </div>
+        </div>
+
+        <div id="reporte-container" class="lista-productos">
+            </div>
+    </div>
+
+    <script src="reportes.js"></script>
+</body>
+</html>

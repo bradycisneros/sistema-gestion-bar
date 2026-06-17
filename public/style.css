@@ -1,0 +1,134 @@
+:root {
+    --bg-color: #f7f3e8;       /* Beige claro de fondo (papel pergamino) */
+    --wood-light: #d2b48c;     /* El color de tu madera clara */
+    --wood-hover: #bda380;
+    --text-main: #1d1d1f;      /* Negro casi puro para legibilidad */
+    --text-muted: #7f7461;
+    --border-color: #e5dfd2;
+    
+    /* Colores de Estado (Respetando tu preferencia) */
+    --disponible: #28a745;     /* Verde éxito */
+    --ocupada: #e67e22;        /* Naranja alerta */
+    --accent-dark: #212121;    /* Negro mate para títulos */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    /* Aplicamos la misma textura que en reportes y caja */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZG9kZCI+PGcgZmlsbD0iI2U4ZTRkOCIgZmlsbC1vcGFjaXR5PSIwLjUiPjxwYXRoIGQ9Ik0wIDAgaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
+}
+
+/* Encabezado */
+header {
+    background-color: var(--wood-light); /* Color madera real */
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px solid var(--wood-hover);
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #444;
+}
+
+/* Contenedor Principal */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--text-muted);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+}
+
+/* Indicadores de Estado */
+.indicadores {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.tag {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.tag.disponible { background-color: var(--disponible); }
+.tag.ocupada { background-color: var(--ocupada); }
+
+/* Grid del Salón (25 mesas automáticas) */
+#salon-mesas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+/* Botón de Mesa */
+.mesa {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    color: white;
+}
+
+.mesa:active {
+    transform: scale(0.95);
+}
+
+/* Estados de las Mesas */
+.mesa.disponible {
+    background: linear-gradient(145deg, #2ecc71, #27ae60);
+    border-bottom: 4px solid #1e8449;
+}
+
+.mesa.ocupada {
+    background: linear-gradient(145deg, #e67e22, #d35400);
+    border-bottom: 4px solid #a04000;
+}
+
+/* Hover solo si no es táctil para evitar bugs en celular */
+@media (hover: hover) {
+    .mesa:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+}
+
+/* Responsividad para móviles */
+@media (max-width: 480px) {
+    #salon-mesas {
+        grid-template-columns: repeat(3, 1fr); /* 3 mesas por fila en celular */
+        gap: 10px;
+    }
+    
+    header h1 { font-size: 1.4rem; }
+    .mesa { font-size: 1rem; }
+}

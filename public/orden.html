@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bar Jair - Tomar Orden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="pantalla-orden">
+
+    <header class="header-madera">
+        <div class="header-info">
+            <h1>MESA: <span id="num-mesa">--</span></h1>
+            <small>ID ORDEN: <span id="id-orden">--</span></small>
+        </div>
+        <button onclick="window.location.href='salon.html'" class="btn-secundario">← VOLVER</button>
+    </header>
+
+    <main class="contenedor-columnas">
+        <section class="columna-menu">
+            <div class="tarjeta-blanca">
+                <div class="tarjeta-header">
+                    <h2>MENÚ DEL DÍA</h2>
+                    <div id="categorias-menu" class="selector-categorias">
+                        </div>
+                </div>
+                <div class="tarjeta-cuerpo">
+                    <div id="lista-productos" class="grid-productos">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="columna-comanda">
+            <div class="tarjeta-comanda">
+                <div class="tarjeta-header">
+                    <h2>COMANDA ACTUAL</h2>
+                </div>
+                <div class="comanda-contenido">
+                    <ul id="lista-comanda" class="items-comanda">
+                        </ul>
+                    <div id="comanda-placeholder" class="vacio-texto">
+                        Agrega productos para armar la comanda.
+                    </div>
+                </div>
+                <div class="comanda-footer">
+                    <div class="total-contenedor">
+                        <span>TOTAL:</span>
+                        <strong id="comanda-total">$0.00</strong>
+                    </div>
+                    <button id="enviar-cocina" class="btn-accion-negro">
+                        ENVIAR A COCINA
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-nota" class="modal-fondo" style="display:none;">
+        <div class="modal-caja">
+            <h3>Personalizar Pedido</h3>
+            <p id="nombre-producto-modal">--</p>
+            <input type="text" id="input-nota" placeholder="Ej: Bien frío, sin salsa...">
+            <div class="modal-botones">
+                <button id="cancelar-modal" class="btn-cancelar">CANCELAR</button>
+                <button id="confirmar-add" class="btn-confirmar">AGREGAR</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="orden.js"></script>
+</body>
+</html>

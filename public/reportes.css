@@ -1,0 +1,294 @@
+/* --- PALETA RÚSTICA: MADERA CLARA (DE IMAGEN) / BEIGE / ACENTOS --- */
+:root {
+    --bg-color: #f7f3e8;       /* Beige muy claro (papel pergamino suave) */
+    --card-bg: #ffffff;        /* Blanco puro para contraste en tarjetas */
+    --text-main: #1d1d1f;      /* Negro casi puro para texto principal */
+    --text-muted: #7f7461;    /* Café grisáceo para textos secundarios */
+    --border-color: #e5dfd2;   /* Beige oscuro para bordes suaves */
+    
+    /* --- COLOR DE TU MADERA (DE IMAGEN) --- */
+    --wood-light-real: #d2b48c; /* Tono café claro natural de pino/encino */
+    --wood-hover: #bda380;     /* Tono ligeramente más oscuro para hover */
+    
+    /* Tonos de Acento y Estado */
+    --accent-dark: #212121;    /* Negro mate para acentos profundos */
+    --danger-rustic: #a94442;  /* Rojo óxido/ladrillo para alertas suave */
+    --success-rustic: #3e6d3a;  /* Verde musgo para utilidad */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZG9kZCI+PGcgZmlsbD0iI2U4ZTRkOCIgZmlsbC1vcGFjaXR5PSIwLjUiPjxwYXRoIGQ9Ik0wIDAgaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4='); /* Textura sutil de papel */
+}
+
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: #444; /* Un gris oscuro en lugar de café oscuro */
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--wood-light-real); /* Subrayado con el color de tu madera */
+    padding-bottom: 15px;
+}
+
+/* --- Rejilla de Tarjetas Rústicas --- */
+.grid-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 6px; /* Bordes más cuadrados y sólidos */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    border-color: #d8ceb8;
+}
+
+/* Detalle de "Madera Real" en la parte superior de cada tarjeta */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--wood-light-real);
+}
+
+.card h3 {
+    margin: 0 0 15px 0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1.2px;
+    font-weight: 700;
+}
+
+.card p {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 200; /* Letra delgada y elegante */
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+/* Resaltados específicos con elegancia */
+.card.utilidad {
+    background-color: #fbfaf5; /* Un beige aún más claro */
+    border: 2px solid var(--success-rustic);
+}
+.card.utilidad p { color: var(--success-rustic); font-weight: 400; }
+
+.card.gastos p { color: var(--danger-rustic); }
+
+/* Destacado Negro Mate */
+.card.total-bruto {
+    background-color: var(--accent-dark);
+    color: #ffffff;
+    border: none;
+}
+.card.total-bruto h3 { color: #aaaaaa; }
+.card.total-bruto p { color: #ffffff; font-weight: 400; }
+.card.total-bruto::before { background-color: #444444; }
+
+
+/* --- Sección de Controles (Filtros) --- */
+.controles-reporte {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+}
+
+.grupo-fechas {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.input-fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-fecha label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+input[type="date"] {
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+    color: var(--text-main);
+    font-family: inherit;
+}
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--wood-light-real);
+    box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.2);
+}
+
+/* --- Botones --- */
+.grupo-botones {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-primario {
+    background-color: var(--wood-light-real); /* Botón con el color de tu madera */
+    color: #444; /* Texto oscuro para contraste */
+    border: none;
+}
+.btn-primario:hover {
+    background-color: var(--wood-hover);
+    color: #333;
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--danger-rustic);
+    border: 2px solid #e5cccc;
+}
+.btn-secundario:hover {
+    background-color: #fff8f8;
+    border-color: var(--danger-rustic);
+}
+
+/* --- Lista de Productos (Top Ventas) --- */
+.lista-productos {
+    margin-top: 50px;
+    background: var(--card-bg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+}
+
+.lista-productos h2 {
+    font-weight: 300;
+    font-size: 1.8rem;
+    color: #555;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color);
+    background-color: #fbfaf7;
+}
+
+.producto-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 25px;
+    border-bottom: 1px solid #f2efea;
+}
+.producto-row:last-child {
+    border-bottom: none;
+}
+.producto-row:hover {
+    background-color: #fcfbf8;
+}
+
+.producto-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.producto-cant {
+    background-color: var(--wood-light-real); /* Cantidad con el color de tu madera */
+    color: #444;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.producto-nombre {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.producto-monto {
+    font-weight: 200;
+    font-size: 1.4rem;
+    color: var(--text-main);
+}
+
+/* --- Navbar (Barra de Navegación con Color de tu Madera) --- */
+.navbar {
+    background-color: var(--wood-light-real); /* AQUÍ ESTÁ EL CAMBIO PRINCIPAL */
+    padding: 15px 0;
+    border-bottom: 2px solid var(--wood-hover);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #444444; /* Texto oscuro para buen contraste sobre madera clara */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 18px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    background-color: rgba(0,0,0,0.05); /* Hover sutil oscuro */
+    color: #000000;
+}

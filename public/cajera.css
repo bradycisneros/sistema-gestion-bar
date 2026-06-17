@@ -1,0 +1,275 @@
+/* --- ESTILO COORDINADO CAJERA (PAGO DIVIDIDO) - BAR JAIR --- */
+:root {
+    --bg-color: #f7f3e8;       /* Beige claro de fondo (papel pergamino) */
+    --card-bg: #ffffff;        /* Blanco puro para contraste en tickets */
+    --text-main: #1d1d1f;      /* Negro casi puro para texto */
+    --text-muted: #7f7461;    /* Café grisáceo para textos secundarios */
+    --border-color: #e5dfd2;   /* Beige oscuro para bordes suaves */
+    
+    /* --- COLOR DE TU MADERA (DE IMAGEN) --- */
+    --wood-light-real: #d2b48c; /* Tono café claro natural */
+    --wood-hover: #bda380;     /* Tono ligeramente más oscuro */
+    
+    /* Tonos de Acento y Estado */
+    --accent-dark: #212121;    /* Negro mate para acentos profundos */
+    --danger-rustic: #a94442;  /* Rojo óxido/ladrillo para alertas suave */
+    --success-rustic: #3e6d3a;  /* Verde musgo para utilidad */
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    /* Textura sutil de papel igual que en reportes */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZG9kZCI+PGcgZmlsbD0iI2U4ZTRkOCIgZmlsbC1vcGFjaXR5PSIwLjUiPjxwYXRoIGQ9Ik0wIDAgaDQwdjQwSDBWMHptMjAgMjBoMjB2MjBIMjBWMjB6TTAgMjBoMjB2MjBIMFYyMHoyMCAwaDIwdjIwSDIwVjB6Ii8+PC9nPjwvZz48L3N2Zz4=');
+}
+
+/* Encabezado Principal */
+header h1 {
+    font-weight: 300;
+    font-size: 2.2rem;
+    color: #444;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 40px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--wood-light-real);
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contenedor de las Mesas (Grid Ordenado) */
+#lista-ordenes {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta de Mesa (Ticket) - Minimalista Rústico */
+.orden-ticket {
+    background: var(--card-bg);
+    border-radius: 6px; /* Bordes menos redondeados para aspecto sólido */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.orden-ticket:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* Encabezado del Ticket (Color de tu Madera Real) */
+.orden-ticket-header {
+    background-color: var(--wood-light-real);
+    padding: 18px 20px;
+    color: #444; /* Texto oscuro para buen contraste */
+    border-bottom: 2px solid var(--wood-hover);
+}
+
+.orden-ticket-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+}
+
+.orden-ticket-header span {
+    font-size: 0.85rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* Cuerpo del Ticket (Platillos) */
+.orden-ticket-body {
+    padding: 25px 20px;
+    flex-grow: 1;
+}
+
+.lista-platillos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-platillos li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f2efea;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.lista-platillos li:last-child {
+    border-bottom: none;
+}
+
+/* Cantidad en Negro Mate (Como pediste) */
+.lista-platillos .cant {
+    color: var(--accent-dark); /* Negro mate profundos */
+    font-weight: 800;
+    margin-right: 5px;
+}
+
+.lista-platillos small {
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 4px;
+}
+
+/* Pie del Ticket (Cierre de Cuenta) */
+.orden-ticket-footer {
+    padding: 20px;
+    background-color: #fbfaf7; /* Beige muy suave */
+    border-top: 1px solid var(--border-color);
+}
+
+.orden-total {
+    font-size: 1.8rem;
+    text-align: right;
+    margin: 0 0 20px 0;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+.label-total {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: normal;
+}
+
+/* --- NUEVOS ESTILOS PARA PAGO DIVIDIDO RÚSTICO --- */
+.pago-dividido-container {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.01);
+}
+
+.instruccion {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+}
+
+.input-pago {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.input-pago:last-child {
+    margin-bottom: 0;
+}
+
+/* Iconos de Efectivo, Tarjeta, Transferencia */
+.input-pago span {
+    font-size: 1.6rem;
+    width: 30px;
+    text-align: center;
+}
+
+/* Inputs de Dinero Minimalistas */
+.input-pago input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color); /* Borde suave beige */
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    color: var(--accent-dark);
+    background-color: #fdfdfd;
+    transition: all 0.2s;
+}
+
+/* Efecto al hacer click en el input */
+.input-pago input:focus {
+    outline: none;
+    border-color: var(--wood-light-real); /* Borde color madera real */
+    background-color: #fff9f0; /* Fondo crema suave */
+    box-shadow: 0 0 0 3px rgba(210, 180, 140, 0.2);
+}
+
+/* Estilo para el botón de Pagar (Negro Mate Minimalista) */
+.btn-pagar {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--accent-dark); /* Negro mate */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-pagar:hover {
+    background-color: #444;
+}
+
+/* Estilo de la Navbar (Idéntica a Reportes y con Color de tu Madera Real) */
+.navbar {
+    background-color: var(--wood-light-real); /* Color café claro natural */
+    padding: 15px 0;
+    border-bottom: 2px solid var(--wood-hover);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #444; /* Texto oscuro */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 18px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: #000;
+}
+
+/* Mensaje cuando no hay cuentas activas */
+.no-cuentas {
+    text-align: center;
+    padding: 80px;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    grid-column: 1 / -1;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.lista-platillos {
+    max-height: 200px; /* Si la cuenta es muy larga, no estira el ticket al infinito */
+    overflow-y: auto;  /* Permite bajar dentro del ticket para ver más productos */
+    padding-right: 5px;
+}

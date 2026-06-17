@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Gestión de Stock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cajera.css">
+    <link rel="stylesheet" href="productos.css"> 
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="cajera.html" class="nav-link">💵 Caja Registradora</a>
+            <a href="reportes.html" class="nav-link">📊 Reporte de Ventas</a>
+            <a href="productos.html" class="nav-link">📦 Gestión de Precios</a>
+        </div>
+    </nav>
+
+    <div class="container-admin">
+        <header>
+            <h1>Gestión de Inventario y Precios</h1>
+            <p>Selecciona un producto existente para cargar stock o crea uno nuevo.</p>
+        </header>
+
+        <section class="form-edicion">
+            <div class="form-group">
+                <label>🔍 Seleccionar Producto:</label>
+                <select id="select-producto" onchange="seleccionarProductoExistente()">
+                    </select>
+            </div>
+
+            <div id="campos-producto">
+                <input type="hidden" id="id-producto">
+                
+                <div class="form-group">
+                    <label>Nombre del Producto:</label>
+                    <input type="text" id="nombre-prod" placeholder="Ej. Michelada Victoria 1Lt">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Costo de Compra ($):</label>
+                        <input type="number" id="costo-prod" step="0.1" placeholder="0.00">
+                    </div>
+                    <div class="col">
+                        <label>Precio de Venta ($):</label>
+                        <input type="number" id="precio-prod" step="0.1" placeholder="0.00">
+                    </div>
+                    <div class="col">
+                        <label class="label-stock">Cantidad que Ingresa:</label>
+                        <input type="number" id="cantidad-prod" value="0" class="input-stock">
+                    </div>
+                </div>
+
+                <button class="btn-guardar" onclick="guardarProducto()">
+                    💾 Registrar Movimiento
+                </button>
+            </div>
+        </section>
+
+        <div class="search-box">
+            <input type="text" id="buscador-prod" placeholder="🔎 Filtrar tabla por nombre...">
+        </div>
+
+        <table class="tabla-inventario">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Costo</th>
+                    <th>Venta</th>
+                    <th>Margen</th>
+                    <th>Stock Actual</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="cuerpo-inventario">
+                </tbody>
+        </table>
+    </div>
+
+    <script src="productos.js"></script>
+</body>
+</html>

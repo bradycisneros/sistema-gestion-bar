@@ -1,0 +1,74 @@
+/* Ajuste del Grid para que los botones sean más grandes */
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Botones más anchos */
+    gap: 12px;
+    padding: 20px;
+}
+
+/* Transformar el item en un botón táctil profesional */
+.producto-item-card {
+    border: 2px solid #e5dfd2; /* Un borde un poco más marcado */
+    padding: 20px 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column; /* Nombre arriba, precio abajo */
+    justify-content: center;
+    align-items: center;
+    background: var(--card-bg);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+    min-height: 100px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.producto-item-card:hover {
+    border-color: var(--wood-header);
+    background-color: #fffdf9;
+    transform: translateY(-2px);
+}
+
+.producto-item-card:active {
+    transform: scale(0.95);
+    background-color: #ebe7de;
+}
+
+/* Ocultar el botón "+" pequeño, ya que toda la card será clickeable */
+.btn-add-comanda {
+    display: none; 
+}
+
+.prod-nombre {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.prod-precio {
+    font-size: 1rem;
+    background: #f0ede4;
+    padding: 2px 10px;
+    border-radius: 15px;
+    color: var(--success-green);
+}
+
+/* Estilo para el pie de la comanda (Total y Botón) */
+.comanda-footer {
+    padding: 20px;
+    background: #fbfaf7;
+    border-top: 2px solid #eee;
+}
+
+.total-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#comanda-total {
+    font-size: 2rem;
+    color: var(--accent-black);
+}
